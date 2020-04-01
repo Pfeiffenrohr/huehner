@@ -200,7 +200,7 @@ void oeffnen() {
 }
 
 void initialisiere() {
-  wert2 = 0;
+  wert2 = 0; 
   wert3 = analogRead(sensePin3);
   Serial.println("Initialisierung ....");
   if (wert3 >= 500)
