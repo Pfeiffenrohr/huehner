@@ -2,14 +2,14 @@
 #include <Firmata.h>
 
 /*
-  HÃ¼hnertÃ¼r Ã¶ffner 
+  Hühnertür öffner 
 */
-int maxOpen = 180; // Anzahl der Umdrheungen bis TÃ¼r offen
-int auf = 0 ; // TÃ¼r ist zu
+int maxOpen = 180; // Anzahl der Umdrheungen bis Tür offen
+int auf = 0 ; // Tür ist zu
 int pinLR = 12;
 int pinPWM = 11;
 int autom = 1; //Wird durch Sensor geschaltet
-int maxInterations =0;//Anzahl der maximalen DurchlÃ¤ufe, bevor im AufZu eine Aenderung ergibt
+int maxInterations =0;//Anzahl der maximalen Durchläufe, bevor im AufZu eine Aenderung ergibt
 int errorschliessen =0; //Ist der Wert 1, gab es ein Problem beim schliessen
 int erroroeffnen =0; //Ist der Wert 1, gab es ein Problem beim oeffnen
 
@@ -52,7 +52,7 @@ int zaehleUmdrehungen(int richtung, int wert) {
   int iteration = 0;
   while (1 == 1)
   {
-    delay(10); //Vermeidet das Prellen
+    delay(5); //Vermeidet das Prellen
     if (iteration > 100)
     {
       if (richtung == 1) 
@@ -94,6 +94,8 @@ int zaehleUmdrehungen(int richtung, int wert) {
     }    
     sens1Changed = 0;
     wert1 = analogRead(sensePin1);
+  //  Serial.println("Sensorwert 1:");
+   // Serial.println(wert1);
     if ( wert1 > 500)
     {
       if (sens1 == 0)
@@ -147,7 +149,9 @@ int zaehleUmdrehungen(int richtung, int wert) {
     }
     sens2Changed = 0;
     wert2 = analogRead(sensePin2);
-    if ( wert2 > 500)
+   // Serial.println("Sensorwert2 :");
+   // Serial.println(wert2);
+    if ( wert2 > 20)
     {
       if (sens2 == 0)
       {
@@ -203,6 +207,8 @@ void initialisiere() {
   wert2 = 0; 
   wert3 = analogRead(sensePin3);
   Serial.println("Initialisierung ....");
+  Serial.println("Sensorwert:");
+    Serial.println(wert3);
   if (wert3 >= 500)
  {
    return;
@@ -379,8 +385,8 @@ void loop() {
 
     if (wert4 < 1 && auf == 1 )
    {
-     //Workaround, da sonst zu frÃ¼h geschlossen wird
-     delay(600000);
+     //Workaround, da sonst zu früh geschlossen wird
+     delay(60000);
       schliessen();
     }
    if (wert4 > 70 && auf == 0 )
