@@ -188,6 +188,7 @@ public class Hühnerstall {
 				}
 			} catch (Exception ex) {
 				fh.writeFile(filename, ex.toString(), true);
+				queue.removeElementAt(0);
 				System.err.println(ex);
 			}
 
