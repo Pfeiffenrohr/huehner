@@ -108,6 +108,7 @@ public class Hühnerstall {
 							}
 						} catch (Exception ex) {
 							System.err.println(ex.getStackTrace().toString());
+									ex.printStackTrace();
 						}
 					}
 					if (str.contains("Error")) {
@@ -190,6 +191,7 @@ public class Hühnerstall {
 				fh.writeFile(filename, ex.toString(), true);
 				queue.removeElementAt(0);
 				System.err.println(ex);
+				ex.printStackTrace();
 			}
 
 			try {
