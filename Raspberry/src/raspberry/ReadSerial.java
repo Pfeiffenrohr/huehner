@@ -48,7 +48,7 @@ public class ReadSerial implements Runnable {
 	            		 queue.addElement(inputstring);
 	            		 count++;
 	            		 env.put("iterationen", count);
-	            		// System.out.println(inputstring);
+	            		 //System.out.println("Inputstring = "+inputstring);
 	                 } catch (IOException e) {
 	                     e.printStackTrace();
 	                 }
